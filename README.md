@@ -14,7 +14,7 @@ This project aims to create an online portal for Symphony Ltd., a private instit
 - **Backend:** C# programming language
 
 ## .Net MVC Nugget Packages
-![Screenshot of packages used in this Symphony eProject](https://github.com/mesumbinshaukat/EProject-Management-Portal/blob/main/temp/images/Packages.PNG?raw=true)
+![Screenshot of packages used in this Symphony eProject](https://github.com/abdulrafayKhan-10/Institute-Management-Portal/blob/main/temp/images/Packages.PNG)
 
 
 ## Features
@@ -37,7 +37,7 @@ The project utilizes a SQL database model comprising entities such as Course, St
 
 **Clone the Repository:**
    ```bash
-   git clone https://github.com/mesumbinshaukat/EProject-Management-Portal.git
+   git clone https://github.com/abdulrafayKhan-10/Institute-Management-Portal.git
    ```
 
 
@@ -46,7 +46,7 @@ Clone this repository to your desktop.
 
 Open project  solution file `Symphony-LTD.sln`
 
-Open Package Manager Console ![Package Manager Console](https://github.com/mesumbinshaukat/EProject-Management-Portal/blob/main/temp/images/Package%20Manager%20Console.png?raw=true)
+Open Package Manager Console ![Package Manager Console](https://github.com/abdulrafayKhan-10/Institute-Management-Portal/blob/main/temp/images/Package%20Manager%20Console.png)
 
 Run this command in `Nugget Package Manager` to generate the database in the SSMS: 
 ```

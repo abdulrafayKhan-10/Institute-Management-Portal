@@ -1,0 +1,98 @@
+﻿@model Symphony_LTD.Models.About
+@{
+    ViewData["Title"] = "Add About Us";
+    Layout = "_AdminLayout";
+}
+
+<div class="content-page">
+    <div class="content">
+        <h1>Add Content</h1>
+        <h3>About Us Content</h3>
+        <hr />
+
+        <div class="container">
+                <form asp-controller="Admin" asp-action="AboutUs" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                    <div class="col-6 mb-2">
+                        <div class="form-group">
+                            <label asp-for="HeadingOne" class="form-label"></label><span class="text-danger fw-bold">*</span>
+                            <input asp-for="HeadingOne" placeholder="First Heading" class="form-control" required/>
+                            <span asp-validation-for="HeadingOne" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="form-group">
+                            <label asp-for="HeadingTwo" class="form-label"></label><span class="text-danger fw-bold">*</span>
+                            <input asp-for="HeadingTwo" placeholder="Second Heading" class="form-control" required />
+                            <span asp-validation-for="HeadingTwo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="form-group">
+                            <label asp-for="ImageOne" class="form-label"></label><span class="text-danger fw-bold">*</span>
+                            <input type="file" asp-for="ImageOne" name="img_one" class="form-control" required />
+                            <span asp-validation-for="ImageOne" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="form-group">
+                            <label asp-for="ImageTwo" class="form-label"></label><span class="text-danger fw-bold">*</span>
+                            <input type="file" asp-for="ImageTwo" name="img_two" class="form-control" required />
+                            <span asp-validation-for="ImageTwo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="form-group">
+                            <label asp-for="ParagraphOne" class="form-label"></label><span class="text-danger fw-bold">*</span>
+                            <textarea asp-for="ParagraphOne" class="form-control" placeholder="Write something..."></textarea>
+                            <span asp-validation-for="ParagraphOne" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="form-group">
+                            <label asp-for="ParagraphTwo" class="form-label"></label><span class="text-danger fw-bold">*</span>
+                            <textarea asp-for="ParagraphTwo" class="form-control" placeholder="Write something..." required></textarea>
+                            <span asp-validation-for="ParagraphTwo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="form-group">
+                            <label asp-for="ParagraphThree" class="form-label"></label><span class="text-danger fw-bold">*</span>
+                            <textarea asp-for="ParagraphThree" class="form-control" placeholder="Write something..." required></textarea>
+                            <span asp-validation-for="ParagraphThree" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="form-group">
+                            <label asp-for="ParagraphFour" class="form-label"></label><span class="text-danger fw-bold">*</span>
+                            <textarea asp-for="ParagraphFour" class="form-control" placeholder="Write something..." required></textarea>
+                            <span asp-validation-for="ParagraphFour" class="text-danger"></span>
+                        </div>
+                    </div>
+                    
+                  
+                     <div class="col-12 text-center">
+                        <div class="form-group">
+                           
+                            <input type="submit" class="btn btn-outline-success" value="Add" />
+                          
+                        </div>
+                    </div>
+            </div>
+
+
+                </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+                }

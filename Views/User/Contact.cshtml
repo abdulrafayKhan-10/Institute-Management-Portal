@@ -1,0 +1,220 @@
+﻿@model Symphony_LTD.Models.Contact
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<style>
+    .nav-link{
+        color: black !important;
+    }
+</style>
+
+
+
+<!-- contact start -->
+<section class="section" id="contact">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="title text-center mb-5">
+                    <h6 class="text-primary small-title">Contact</h6>
+                    <h4>Have any Questions ?</h4>
+                    <p class="text-muted">We're here to answer all your queries, feel free to contact us however you like. 😉</p>
+                </div>
+            </div>
+        </div>
+
+        @if (TempData["failed"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                An unexpected error occurred while submitting the form.
+            </div>
+        }
+        
+        @if (TempData["success"] != null)
+        {
+        <div class="alert alert-success" role="alert">
+            Form submitted successfully!
+        </div>
+            
+        }
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="get-in-touch">
+                    <h5>Get in touch</h5>
+                    <p class="text-muted mb-5">Get In Touch With Us For More Details.</p>
+
+                    <div class="mb-3">
+                                               
+                        <div class="overflow-hidden">
+
+                            <h5 class="font-16 mb-0">E-mail</h5>
+                            <p class="text-muted">info@mesum.online</p>
+                        </div>
+
+                           
+                    </div>
+                    <div class="mb-3">
+                        <div class="get-touch-icon float-start me-3">
+                        </div>
+                        <div class="overflow-hidden">
+                            <h5 class="font-16 mb-0">Phone</h5>
+                            <p class="text-muted">03362100225</p>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="get-touch-icon float-start me-3">
+                        </div>
+                        <div class="overflow-hidden">
+                            <h5 class="font-16 mb-0">Address</h5>
+                            <p class="text-muted">Nazimabad No.4, Karachi, 74600</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="custom-form bg-white">
+                    <span id="error-msg"></span>
+                    <form method="post" asp-controller="User" asp-action="Contact">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="FirstName" class="control-label"></label>
+                                    <input asp-for="FirstName" class="form-control" placeholder="First Name" required/>
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="MiddleName" class="control-label"></label>
+                                    <input asp-for="MiddleName" placeholder="Middle Name (Optional)" class="form-control" />
+                                    <span asp-validation-for="MiddleName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="LastName" class="control-label"></label>
+                                    <input asp-for="LastName" placeholder="Last Name" class="form-control" required/>
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                            </div>
+                             <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" placeholder="Email" class="form-control" required/>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="PhoneNumber" class="control-label"></label>
+                                    <input asp-for="PhoneNumber" placeholder="Phone Number" class="form-control" required/>
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                             <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="Address" class="control-label"></label>
+                                    <input asp-for="Address" placeholder="Address" class="form-control" required/>
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label asp-for="Subject" class="control-label"></label>
+                                    <input asp-for="Subject" placeholder="Subject" class="form-control" />
+                                    <span asp-validation-for="Subject" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label asp-for="Message" class="control-label">Message</label>
+                                    <textarea asp-for="Message" class="form-control" rows="4" placeholder="Enter your message..."></textarea>
+                                  
+                                    <span asp-validation-for="Message" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-lg-12 text-end">
+                                <input type="submit" class="btn btn-outline-success" value="Send Message" />
+                            </div>
+                        </div>
+                        <!-- end row -->
+                    </form>
+                </div>
+                <!-- end custom-form -->
+
+            </div>
+        </div>
+        <!-- end row -->
+
+        <div class="row mt-3 text-center">
+            <h3>Branches</h3>
+            <hr />
+            <div class="col-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                Branch
+                            </th>
+                            <th>
+                                Branch Code
+                            </th>
+                            <th>
+                                Address
+                            </th>
+                            <th>
+                                City
+                            </th>
+                            <th>
+                                Country
+                            </th>
+                            <th>
+                                Postal/Zip Code
+                            </th>
+
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var i in ViewBag.Branches)
+                        {
+                       
+                        <tr>
+                            <td>@i.Branches</td>
+                            <td>@i.Code</td>
+                            <td>@i.Address</td>
+                            <td>@i.City</td>
+                            <td>@i.Country</td>
+                            <td>@i.Postal</td>
+                        </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <!-- end container-fluid -->
+</section>
+<!-- contact end -->

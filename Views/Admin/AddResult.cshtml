@@ -1,0 +1,71 @@
+﻿@model Symphony_LTD.Models.Result
+
+@{
+    ViewData["Title"] = "Add Result";
+    Layout = "_AdminLayout";
+}
+
+<div class="content-page">
+    <div class="content">
+        <h1>Individual Student Exam Results</h1>
+
+        <h4>Make Result For Student</h4>
+        <hr />
+        <div class="container-fluid">
+
+            <form method="post" asp-action="AddResult">
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+
+
+                                <div class="mb-3">
+                                    <label asp-for="StudentId" class="form-label"></label>
+                                    <select asp-for="StudentId" class="form-control">
+                                        @foreach (var i in ViewBag.IndividualStudentExam)
+                                        {
+                                            if (i.Pending == false)
+                                            {
+                                                foreach (var x in ViewBag.Student)
+                                                {
+                                                    if (x.StudentId == i.StudentId)
+                                                    {
+                                                        <option value="@i.StudentId">@x.FirstName @x.MiddleName @x.LastName | Roll No#-: @i.StudentId</option>
+                                                    }
+
+                                                }
+
+                                            }
+
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="MarksObtained"></label>
+                                    <input asp-for="MarksObtained" class="form-control" placeholder="Exam Date" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="Comments"></label>
+                                    <input type="text" asp-for="Comments" class="form-control" placeholder="Exam Detail" required>
+                                </div>
+
+                                <div class="mb-3 mt-4">
+                                    <input type="submit" class="form-control btn btn-success" value="Add">
+                                </div>
+
+                            </div>
+                        </div> <!-- end card-->
+                    </div> <!-- end col -->
+
+                </div>
+                <!-- end row-->
+
+            </form>
+        </div>
+    </div>
+</div>
+

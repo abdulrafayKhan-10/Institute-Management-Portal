@@ -1,0 +1,103 @@
+﻿@model Symphony_LTD.Models.Exam
+@{
+    Layout = "_AdminLayout";
+    ViewData["title"] = "Individual Student Exam Schedule";
+}
+
+<div class="content-page">
+    <div class="content">
+        <h1><span class="text-danger">Pending</span> Student Exam</h1>
+        <h3>These Are The Schedule Of Individual Student Exams</h3>
+        <hr />
+
+        <div class="row p-3" style="background-color:white !important; border-radius: 25px !important;">
+           
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+
+                                <th>
+                                    Exam Name/Title
+                                </th>
+                                <th>Exam Date</th>
+                                <th>Total Score</th>
+                                <th>Student Name</th>
+                                <th>Course Name</th>
+                                <th>Detail</th>
+                                <th>Status</th>
+
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var i in ViewBag.Exams)
+                            {
+                                if (i.Pending)
+                                {
+                                <tr>
+
+                                    <td>@i.ExamName</td>
+                                    <td>@i.ExamDate</td>
+                                    <td>@i.Score</td>
+                                        <td>
+                                    @foreach (var x in ViewBag.Student)
+                                    {
+                                            @if (x.StudentId == i.StudentId)
+                                            {
+                                                @x.FirstName @x.MiddleName @x.LastName
+                                            }                                        
+                                    }
+                                    </td>
+                                    <td>
+                                        @foreach (var x in ViewBag.Course)
+                                        {
+                                            @if (x.Id == i.CourseId)
+                                            {
+                                                @x.CourseName
+                                            }
+                                        }
+                                    </td>
+                                    <td>@i.Detail</td>
+                                    <td>
+                                        @if (i.Pending == true)
+                                        {
+                                            <p class="text-danger fw-bold">Not Done</p>
+                                        }
+                                        else if (i.Pending == false && i.Pending != null)
+                                        {
+                                            <p class="text-success fw-bold">Done</p>
+                                        }
+                                    </td>
+
+                                    <td>
+
+                                        <form asp-action="IndividualStudentExamSchedule">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" asp-for="Id" value="@i.Id" />
+                                            <input type="hidden" asp-for="ExamName" value="@i.ExamName" />
+                                            <input type="hidden" asp-for="ExamDate" value="@i.ExamDate" />
+                                            <input type="hidden" asp-for="Score" value="@i.Score" />
+                                            <input type="hidden" asp-for="StudentId" value="@i.StudentId" />
+                                            <input type="hidden" asp-for="CourseId" value="@i.CourseId" />
+                                            <input type="hidden" asp-for="Detail" value="@i.Detail" />
+                                            <input type="hidden" asp-for="Pending" value="false" />
+
+                                            <input type="submit" class="btn btn-warning" value="Exam Conducted"/>
+                                        </form>                                       
+
+                                    </td>
+                                </tr>                                    
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

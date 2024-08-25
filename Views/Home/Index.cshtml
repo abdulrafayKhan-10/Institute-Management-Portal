@@ -1,0 +1,274 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- home start -->
+
+<section class="bg-home bg-gradient" id="home">
+    <div class="home-center">
+        <div class="home-desc-center">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="home-title">
+                            @if (ViewBag.H5 != null)
+                                {
+                                <h5 class="mb-3 text-white-50">@ViewBag.H5</h5>
+                                }else
+                                {
+                                <h5 class="mb-3 text-white-50">Symphony Institute</h5>
+                                }
+
+                            @if (ViewBag.H2 != null)
+                            {
+                                <h2 class="mb-4 text-white">@ViewBag.H2</h2>
+                                }
+                                else{
+
+                                    <h2 class="mb-4 text-white">Take the initial steps to success with our institute.</h2>
+                                    }
+
+                            @if (ViewBag.Paragraph != null)
+                                {
+                                <p class="text-white-50 home-desc font-16 mb-5">@ViewBag.Paragraph</p>
+                                }
+                                else{
+                                <p class="text-white-50 home-desc font-16 mb-5">Symphony Ltd. is private institute, which generally conducts the classes and training materials for the various certifications that are related to IT and Software industries like networking related, Java related, database related like for SQL Servers, oracle, etc.</p>
+
+                                    
+                                    }
+                            <div class="watch-video mt-5">
+                                @if (ViewBag.BtnAction != null && ViewBag.BtnVal != null)
+                                    {
+                                    <a href="@ViewBag.BtnAction" class="btn btn-custom me-4">@ViewBag.BtnVal</a>
+
+                                    }
+                                else if (ViewBag.BtnAction != null)
+                                    {
+                                    <a href="@ViewBag.BtnAction" class="btn btn-custom me-4">Get Started</a>
+                                    }
+                                else if (ViewBag.BtnVal != null)
+                                    {
+                                    <a asp-controller="Home" asp-action="Index" class="btn btn-custom me-4">@ViewBag.BtnVal</a>
+                                    }
+                                    else {
+                                    <a asp-controller="Home" asp-action="Index" class="btn btn-custom me-4">Get Started</a>
+
+                                    }
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1 col-sm-6">
+                        <div class="home-img mo-mt-20">
+                            @if (ViewBag.Img != null)
+                                {
+                                <img src="~/media/home/@ViewBag.Img" alt="@ViewBag.Img" class="img-fluid mx-auto d-block">
+                                }
+                                else{
+                                <img src="~/landing_page_images/home-img.png" alt="" class="img-fluid mx-auto d-block">
+
+                                }
+                        </div>
+                    </div>
+                        
+                </div>
+                <!-- end row -->
+
+            </div>
+            <!-- end container-fluid -->
+        </div>
+    </div>
+</section>
+
+<!-- home end -->
+<!-- features start -->
+<section class="features" id="features">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav nav-pills nav-justified features-tab mb-5" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-code-tab" data-bs-toggle="pill" href="#pills-code" role="tab" aria-controls="pills-code" aria-selected="true">
+                            <div class="clearfix">
+                                <div class="features-icon float-end">
+                                    <h1></h1>
+                                </div>
+                                <div class="d-none d-lg-block me-4">
+                                    <h5 class="tab-title">Cheapest Course</h5>
+                                    <p>Under $800 Only</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-customize-tab" data-bs-toggle="pill" href="#pills-customize" role="tab" aria-controls="pills-customize" aria-selected="false">
+                            <div class="clearfix">
+                                <div class="features-icon float-end">
+                                    <h1></h1>
+                                </div>
+                                <div class="d-none d-lg-block me-4">
+                                    <h5 class="tab-title">Entrance Exam</h5>
+                                    <p>Upcoming Entrance Exam</p>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-support-tab" data-bs-toggle="pill" href="#pills-support" role="tab" aria-controls="pills-support" aria-selected="false">
+                            <div class="features-icon float-end">
+                                <h1></h1>
+                            </div>
+                            <div class="d-none d-lg-block me-4">
+                                <h5 class="tab-title">Top Asked Question</h5>
+                                <p>Frequently Asked Question</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade" id="pills-code" role="tabpanel" aria-labelledby="pills-code-tab">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-4 col-sm-6">
+                                <div>
+                                    <img src="~/landing_page_images/features-img/img-1.png" alt="" class="img-fluid mx-auto d-block">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 offset-lg-1">
+                                <div>
+                                    @if(ViewBag.Course != null)
+                                    {
+                                    <h5 class="mb-3">Cheapest <span class="text-success">Course</span> Available</h5>
+                                    <h4 class="mb-3">@ViewBag.Course.CourseName</h4>
+                                    <p class="text-muted">@ViewBag.Course.CourseDetails</p>
+                                    <p class="text-muted">Topics Covered: @ViewBag.Course.TopicsCovered</p>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="text-muted">
+                                                <p>Course Fee: <span class="fw-bold text-warning">$@ViewBag.Course.CourseFee</span></p>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="mt-4">
+                                        <a asp-controller="User" asp-action="Courses" class="btn btn-custom">Learn More</a>
+                                    </div>
+                                    }
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <div class="tab-pane fades how active" id="pills-customize" role="tabpanel" aria-labelledby="pills-customize-tab">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-4 col-sm-6">
+                                <div>
+                                    <img src="~/landing_page_images/features-img/img-2.png" alt="" class="img-fluid mx-auto d-block">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 offset-lg-1">
+                                <div>
+                                    @if(ViewBag.EntranceExam != null)
+                                    {
+                                    <h5 class="mb-3">Upcomming Entrance <span class="text-danger">Exam</span></h5>
+                                    <h4 class="mb-3">@ViewBag.EntranceExam.Name</h4>
+                                    <p class="text-muted">@ViewBag.EntranceExam.Description</p>                                   
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="text-muted">
+                                                <p><span class="fw-bold">Schedule Date:</span> @ViewBag.EntranceExam.Date</p>
+                                                <p><span class="fw-bold">Total Marks:</span> @ViewBag.EntranceExam.Marks</p>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="mt-4">
+                                        <a asp-controller="User" asp-action="EntranceExam" class="btn btn-custom">Learn More</a>
+                                    </div>
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- end row -->
+                    </div>
+                    <div class="tab-pane fade" id="pills-support" role="tabpanel" aria-labelledby="pills-support-tab">
+
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-4 col-sm-6">
+                                <div>
+                                    <img src="~/landing_page_images/features-img/img-3.png" alt="" class="img-fluid mx-auto d-block">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 offset-lg-1">
+                                <div>
+                                    @if(ViewBag.FAQ != null){                                    
+                                    <h5 class="mb-3">Frequently Asked Question & <span class="text-success">Answer</span></h5>
+                                    <h4 class="mb-3">@ViewBag.FAQ.Question</h4>
+                                    <p class="text-dark">@ViewBag.FAQ.Answer</p>
+                                    <div class="mt-4">
+                                        <a asp-controller="FAQ" asp-action="FAQS" class="btn btn-custom">Learn More</a>
+                                    </div>
+                                    }
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- end row -->
+                    </div>
+                </div>
+                <!-- end tab-content -->
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container-fluid -->
+</section>
+<!-- features end -->
+<!-- services start -->
+@if (ViewBag.Courses != null)
+{
+    <section class="section bg-light" id="services">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="title text-center">
+                        <h6 class="text-primary small-title">Course</h6>
+                        <h4>Available Courses</h4>
+                        <p class="text-muted">These Are The Currently Available Courses</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var i in ViewBag.Courses)
+                {
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="services-box p-4 bg-white mt-4">
+                            <div class="services-img float-start me-4">
+                                <img src="~/landing_page_images/icons/layers.png" alt="">
+                            </div>
+                            <h5>@i.CourseName</h5>
+                            <div class="overflow-hidden">
+                                <p class="text-muted">@i.CourseDetails</p>
+                                <a asp-controller="User" asp-action="Courses" class="text-custom">Learn More...</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container-fluid -->
+    </section>
+}
+
+
+<!-- services end -->

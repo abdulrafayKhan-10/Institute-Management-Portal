@@ -1,0 +1,10 @@
+.vs/
+bin/
+Migrations/
+obj/
+bin/
+wwwroot/images/
+Properties/PublishProfiles/
+wwwroot/media/about/
+wwwroot/media/faculty/
+wwwroot/media/home/

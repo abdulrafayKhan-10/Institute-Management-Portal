@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Contact>
+
+@{
+    ViewData["Title"] = "Contact";
+}
+@{
+    Layout = "_AdminLayout"; // layout for this view
+}
+
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            <h1>User</h1>
+            <h3>Contact List</h3>
+            <hr />
+           
+            <div class="row">
+                @foreach(var i in Model)
+                {               
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="text-center card-body">
+                           
+                            <div class="text-start">        
+                                <h5>Subject: @i.Subject</h5>
+                                    <p class="font-13 mb-3">
+                                        <b>Message:</b>
+                                    @i.Message
+                                </p>
+
+                                <div class="text-start">
+                                    <p class="text-muted font-13"><strong>Full Name :</strong> <span class="ms-2">@i.FirstName @i.MiddleName @i.LastName</span></p>
+
+                                    <p class="text-muted font-13"><strong>Mobile :</strong><span class="ms-2">@i.PhoneNumber</span></p>
+
+                                    <p class="text-muted font-13"><strong>Email :</strong> <span class="ms-2">@i.Email</span></p>
+
+                                    <p class="text-muted font-13"><strong>Location :</strong> <span class="ms-2">@i.Address</span></p>
+
+                                        @switch(i.Read){
+                                            case true:
+                                                <p class="font-13"><strong>Status :</strong> <span class="text-success fw-bold ms-2">Seen</span></p>
+                                                break;
+                                            case false:
+                                            <div class="row">
+                                                    <div class="col-6">
+                                                        <p class="font-13"><strong>Status :</strong> <span class="ms-2 fw-bold text-warning">Not Seen</span></p>
+                                                    </div>
+                                                    <div class="col-6">
+
+                                                        <b>Action:</b> <a style="cursor:pointer;" asp-controller="Admin" asp-action="MsgRead" asp-route-id="@i.ContactId" title="Mark As Read"><i class="bi bi-check2-square text-success"></i></a>
+
+                                                        
+                                                    </div>
+                                                  </div>
+                                                break;
+
+                                        }
+                                </div>
+                                <div class="text-center">
+
+                                        <a asp-controller="AutoEmailSender" asp-action="Send" asp-route-id="@i.ContactId" class="btn btn-primary rounded-pill waves-effect waves-light">Send Message</a>
+                                        <a asp-controller="Admin" asp-action="DeleteContact" asp-route-id="@i.ContactId" class="btn btn-danger rounded-pill waves-effect waves-light">Delete</a>
+
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div> <!-- end col -->
+                }
+              
+            </div>
+            <!-- end row -->
+
+          
+
+        </div> <!-- container -->
+
+    </div> <!-- content -->
+
+
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+                }

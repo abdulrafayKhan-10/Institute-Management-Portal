@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Admin>
+
+@{
+    ViewData["Title"] = "Log In";
+}
+
+@{
+    Layout = "_AdminLayout"; // Set the layout for this view
+}
+
+    <div class="loading authentication-bg authentication-bg-pattern">
+
+        <div class="account-pages my-5">
+            <div class="container">
+
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-4">
+                        <div class="text-center">
+                            <a asp-action="LogIn">
+                                <img src="~/landing_page_images/Black and White Monogram Business Logo (2).png" alt="" height="22" class="mx-auto">
+                            </a>
+                            <p class="text-muted mt-2 mb-4">Admin Dashboard</p>
+
+                        </div>
+                        <div class="card">
+                            <div class="card-body p-4">
+
+                                <div class="text-center mb-4">
+                                    <h4 class="text-uppercase mt-0">Sign In</h4>
+                                </div>
+
+                                <form method="post" action="@Url.Action("LogIn")">
+                                @Html.AntiForgeryToken()
+                                
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="mb-3">
+                                        <label for="emailaddress" class="form-label">Email address</label>
+                                        <input class="form-control" type="text" name="emailaddress" required placeholder="Enter your email">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input class="form-control" type="password" name="password" required placeholder="Enter your password" id="password">
+
+                                        <div class="mt-2">
+                                        <input type="checkbox" id="show"> <label>Show Password</label>
+                                        </div>
+                                    <div class="mt-2" style="display:none;">
+                                        <input type="checkbox" id="hide" > <label>Hide Password</label>
+                                        </div>
+                                    </div>
+
+                                   
+
+                                    <div class="mb-3 d-grid text-center">
+                                        <button class="btn btn-primary" type="submit"> Log In </button>
+                                    </div>
+                                </form>
+
+                            </div> <!-- end card-body -->
+                        </div>
+                        <!-- end card -->
+
+                      
+                        <!-- end row -->
+
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end page -->
+    </div>
+
+    <script>
+    const passwordField = document.querySelector("#password")
+    const show = document.querySelector("#show") 
+    const hide = document.querySelector("#hide")
+        let check = true;
+        console.log(check)
+        if (show.value !== null) {
+            show.addEventListener("click", () => {
+                if (check) {
+                    check = false
+                    passwordField.setAttribute("type", "text")
+                    console.log("Show Password")
+                    console.log(check)
+                } else {
+                    check = true
+                    passwordField.setAttribute("type", "password")
+                    console.log("Hide Password")
+                    console.log(check)
+                }
+
+               
+
+            })
+        } 
+        
+    </script>
+
+   
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+                }
